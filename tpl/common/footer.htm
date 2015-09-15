@@ -1,0 +1,25 @@
+
+<footer class="bs-footer" role="contentinfo">
+<div class="container"></div>
+</footer>
+
+
+<script src="./tpl/js/jquery.js"></script>
+<script src="./tpl/js/bootstrap.js"></script>
+<script>
+(function($){
+	$(document).scroll(function(){
+		if($(document).scrollTop()>200){
+			$("#top").fadeIn();
+		}else{
+			$("#top").fadeOut();
+		}
+		});
+	$("#top").click(function(){
+		
+		$("html,body").animate({scrollTop:0},500);
+	});
+})(jQuery);
+</script>
+</body>
+</html>

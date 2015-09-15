@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="描述不清楚会被百度看不起？">
+<meta name="keywords" content="FYSCU,php,框架">
+<base href="{$url_root}" />
+<title>让PHP更简单！FYSCU</title>
+
+<!-- Main styles -->
+<link href="./tpl/css/site.css" type="text/css" rel="stylesheet">
+<!-- 
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'> 
+ -->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav"
+	role="banner">
+<div class="container">
+<div class="navbar-header">
+<button class="navbar-toggle" type="button" data-toggle="collapse"
+	data-target=".bs-navbar-collapse"><span class="sr-only">Toggle
+navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+<span class="icon-bar"></span></button>
+<a href="#" class="navbar-brand" alt="Less">FYSCU</a></div>
+<nav class="collapse navbar-collapse bs-navbar-collapse"
+	role="navigation">
+<ul class="nav navbar-nav">
+	<li><a href="#getting-started">快速开始</a></li>
+	<li><a href="#docs">组件文档</a></li>
+	<li><a href="#contact">联系我们</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+	<li class="dropdown"><a target="_blank"
+		href="http://git.oschina.net/captainblue/fyscu"
+		class="dropdown-toggle"><strong>Git</strong></a></li>
+	<li><a href="#">关于</a></li>
+</ul>
+</nav></div>
+</header>
+<div class="docs-header" id="content">
+<div class="container">
+<h1>FYSCU,让PHP更简单！</h1>
+{if $is_dev==1}
+<form action="index.php/index/generator" method="post">
+<p>我都造了，不用你教。信不信我分分钟创建一个项目：  <input style="display:inline;width: auto;" type="text" class="form-control"
+	placeholder="项目英文名称" name="project"><a>s</a>
+	<button  id="add_app" class="btn btn-default btn-sm" type="submit" name="submit" value="1"><span class="glyphicon glyphicon-plus">添加</span></button>
+</div>
+</p>
+</form>
+{/if}
+</div>
+</div>
+<div class="banner">
+<div class="container">FYSCU 最新版本 {$version['VERSION']} - <strong><a>更新时间：{$version['date']}</a>
+</strong></div>
+</div>

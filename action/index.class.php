@@ -11,7 +11,7 @@ class index extends action_base{
 		$config = CONFIG::get('system');
 		$ct = CACHE::get($this->get_route());//路由信息作为缓存KEY
 		if(!$ct){
-			//如果获取混村失败，就渲染页面
+			//如果获取缓存失败，就渲染页面
 			$ct = $this->render('fyscu',array('is_dev'=>$is_dev,'version'=>$config),true);
 			//然后将新渲染的内容存入缓存
 			CACHE::set($this->get_route(),$ct);

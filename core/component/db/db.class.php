@@ -69,7 +69,7 @@ class FYDB  {
 	 * @param $option 附加选项  支持选项： order , limit , group
 	 * @return 返回结果集的一条记录
 	 */
-	public static function find_clumn($table,$fields=array(),$option=array()){
+	public static function find_row($table,$fields=array(),$option=array()){
 		if(!$table||empty($fields)){
 			return null;
 		}

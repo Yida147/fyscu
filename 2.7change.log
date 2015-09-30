@@ -6,4 +6,4 @@
 6.action_base里render增加返回输出内容
 7.action_base增加get_route方法返回路由信息
 8.cache文件缓存组件0.1.1
-9.find_row(find_clumn)的对下兼容  //TODO
+9.find_row(find_clumn)的对下不兼容

@@ -144,7 +144,7 @@ class FYTPL{
 		}
 		return $content;
 	}
-	//JS压缩
+	//JS合并
 	private function js_compress($content,$sig=1){
 		if(!$sig){
 			return $content;
@@ -181,7 +181,22 @@ class FYTPL{
 		}
 		return $content;
 	}
-	
+
+
+    /**
+     *
+     * @param $filename css file name
+     */
+	private function insertCSS($filename){
+
+    }
+
+    /**
+     * @param $filename js file name
+     */
+    private function insertJS($filename){
+
+    }
 }
 
 

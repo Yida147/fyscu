@@ -85,11 +85,11 @@ class action_base{
 	}
 
 	public function insertJS($filename){
-        FYTPL::$insert['JS'][] = $filename;
+        FYTPL::$insert['JS'][$filename] = $filename;
     }
 
     public function insertCSS($filename){
-        FYTPL::$insert['CSS'][] = $filename;
+        FYTPL::$insert['CSS'][$filename] = $filename;
     }
 }
 }

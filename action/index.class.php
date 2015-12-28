@@ -9,17 +9,22 @@ class index extends action_base{
 	public function action_index(){
 		$is_dev = ($_SERVER['REMOTE_ADDR']=='127.0.0.1'||$_SERVER['REMOTE_ADDR']=='::1')?1:0;
 		$config = CONFIG::get('system');
-		$ct = CACHE::get($this->get_route());//路由信息作为缓存KEY
-		if(!$ct){
-			//如果获取缓存失败，就渲染页面
-			$ct = $this->render('fyscu',array('is_dev'=>$is_dev,'version'=>$config),true);
-			//然后将新渲染的内容存入缓存
-			CACHE::set($this->get_route(),$ct);
-		}
-		//然后，将内容输出 （如果有缓存 就是直接输出缓存的内容，不用重新渲染）
-		echo $ct;
-		//输出用时
-		FYTOOL::END_TIME();
+
+
+        $this->render('fyscu',array('is_dev'=>$is_dev,'version'=>$config));
+
+
+//		$ct = CACHE::get($this->get_route());//路由信息作为缓存KEY
+//		if(!$ct){
+//			//如果获取缓存失败，就渲染页面
+//			$ct = $this->render('fyscu',array('is_dev'=>$is_dev,'version'=>$config),true);
+//			//然后将新渲染的内容存入缓存
+//			CACHE::set($this->get_route(),$ct);
+//		}
+//		//然后，将内容输出 （如果有缓存 就是直接输出缓存的内容，不用重新渲染）
+//		echo $ct;
+//		//输出用时
+//		FYTOOL::END_TIME();
 	}
 
 	public function action_page(){

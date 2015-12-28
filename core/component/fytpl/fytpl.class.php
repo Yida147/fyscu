@@ -5,8 +5,13 @@ if(defined('FYSCU_ROOT')){
 
 
 class FYTPL{
+
 	private static $output='';
 	private static $config = array();
+    public static $insert = array(
+        'JS'=>array(),
+        'CSS'=>array(),
+    );
 	//初始化
 	public function init(){
 		//global $config;
@@ -21,6 +26,7 @@ class FYTPL{
 	
 	//模板入口函数，
 	public function template($filename,$path='',$static=0){
+
 		if(empty(self::$config)){
 			self::$config = CONFIG::get('fytpl');
 		}
@@ -31,7 +37,7 @@ class FYTPL{
 		}
 		$tpl = rtrim($path,'/').'/'.$filename.'.htm';
 		
-		if(((time()-filemtime(self::$config['tpl_path'].'c/'.md5($tpl).'.php'))>self::$config['cache_time'])||self::$config['debug']==1){
+		if(self::$config['debug']==1||((is_file(self::$config['tpl_path'].'c/'.md5($tpl).'.php'))&&(time()-filemtime(self::$config['tpl_path'].'c/'.md5($tpl).'.php'))>self::$config['cache_time'])){
 			if(is_file($tpl)){
 				$content = file_get_contents($tpl);
 				$content = ' '.$content;
@@ -47,6 +53,28 @@ class FYTPL{
 				}
 				
 				$content = self::template_psrae($content);
+                if(count(self::$insert['JS'])){
+                    $insertJS = '';
+                    foreach(self::$insert['JS'] as $k=>$v){
+                        if(is_file(self::$config['tpl_path'].'js/'.$v.'.js')){
+                            $insertJS .= '<script src="./tpl/js/'.$v.'.js"></script>'.PHP_EOL;
+                        }
+                    }
+                    if($insertJS!=''){
+                        $content = str_replace('</body>',$insertJS.PHP_EOL.'</body>',$content);
+                    }
+                }
+                if(count(self::$insert['CSS'])){
+                    $insertCSS = '';
+                    foreach(self::$insert['CSS'] as $k=>$v){
+                        if(is_file(self::$config['tpl_path'].'css/'.$v.'.css')){
+                            $insertCSS .= ' <link rel="stylesheet" type="text/css" href="./tpl/css/'.$v.'.css">'.PHP_EOL;
+                        }
+                    }
+                    if($insertCSS!=''){
+                        $content = str_replace('</head>',$insertCSS.PHP_EOL.'</head>',$content);
+                    }
+                }
 				self::$output = $content;
 			}else{
 				die('FILE NOT EXIST:'.$tpl);	
@@ -74,7 +102,7 @@ class FYTPL{
 			//die($name);
 			
 			$sig = file_put_contents($name, self::$output);
-				
+            self::$output = '';
 			if(!$sig){
 				echo '<meta http-equiv="content-type"content="text/html; charset=UTF-8"/>';
 				FYTOOL::debug('对不起,目录 '.self::$config['tpl_path'].'c/ 不可写入，请检查文件权限。');
@@ -144,7 +172,7 @@ class FYTPL{
 		}
 		return $content;
 	}
-	//JS压缩
+	//JS合并
 	private function js_compress($content,$sig=1){
 		if(!$sig){
 			return $content;
@@ -181,7 +209,9 @@ class FYTPL{
 		}
 		return $content;
 	}
-	
+
+
+
 }
 
 

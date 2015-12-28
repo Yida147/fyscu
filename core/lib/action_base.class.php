@@ -83,6 +83,14 @@ class action_base{
 	public function get_route(){
 		return $this->_args['mod'].'/'.$this->_args['action'];
 	}
+
+	public function insertJS($filename){
+        FYTPL::$insert['JS'][$filename] = $filename;
+    }
+
+    public function insertCSS($filename){
+        FYTPL::$insert['CSS'][$filename] = $filename;
+    }
 }
 }
 ?>

@@ -11,9 +11,9 @@ class CONFIG{
 		),
 		//组件开关
 		'modules'=>array(
-			'db'=>1,																	//数据库	
+			'db'=>0,																	//数据库
 			'fytpl'=>1,																	//模板引擎
-			'i18n'=>1,																	//国际化
+			'i18n'=>0,																	//国际化
 			'mongo'=>0,																	//芒果DB
 			'flow'=>0,
 			'cache'=>1,

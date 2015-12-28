@@ -31,7 +31,7 @@ class FYTPL{
 		}
 		$tpl = rtrim($path,'/').'/'.$filename.'.htm';
 		
-		if(((time()-filemtime(self::$config['tpl_path'].'c/'.md5($tpl).'.php'))>self::$config['cache_time'])||self::$config['debug']==1){
+		if(self::$config['debug']==1||((is_file(self::$config['tpl_path'].'c/'.md5($tpl).'.php'))&&(time()-filemtime(self::$config['tpl_path'].'c/'.md5($tpl).'.php'))>self::$config['cache_time'])){
 			if(is_file($tpl)){
 				$content = file_get_contents($tpl);
 				$content = ' '.$content;

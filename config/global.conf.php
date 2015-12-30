@@ -5,9 +5,9 @@
 class CONFIG{
 	private static $config = array(
 		'system'=>array(
-			'VERSION'=>'2.7.5',
+			'VERSION'=>'2.8.1',
 			'charset'=>'utf-8',
-			'date'=>'2014-10-10',
+			'date'=>'2015-12-30',
 		),
 		//组件开关
 		'modules'=>array(

@@ -9,11 +9,12 @@ class index extends action_base{
 	public function action_index(){
 		$is_dev = ($_SERVER['REMOTE_ADDR']=='127.0.0.1'||$_SERVER['REMOTE_ADDR']=='::1')?1:0;
 		$config = CONFIG::get('system');
-
-
+        $this->insertJS('jquery');
+        $this->insertJS('jquery');
+        $this->insertJS('jquery');
+        $this->insertJS('application');
+        $this->insertCSS('site');
         $this->render('fyscu',array('is_dev'=>$is_dev,'version'=>$config));
-
-
 //		$ct = CACHE::get($this->get_route());//路由信息作为缓存KEY
 //		if(!$ct){
 //			//如果获取缓存失败，就渲染页面

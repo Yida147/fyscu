@@ -7,7 +7,7 @@ class CONFIG{
 		'system'=>array(
 			'VERSION'=>'2.8.2',
 			'charset'=>'utf-8',
-			'date'=>'2016-1-8',
+			'date'=>'2015-1-8',
 		),
 		//组件开关
 		'modules'=>array(
